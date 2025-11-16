@@ -10,6 +10,7 @@ pub fn get_problem(id: u32) -> Option<Box<dyn Problem>> {
         2 => Some(Box::new(problems_1_50::Problem2)),
         3 => Some(Box::new(problems_1_50::Problem3)),
         4 => Some(Box::new(problems_1_50::Problem4)),
+        5 => Some(Box::new(problems_1_50::Problem5)),
 
         _ => None,
     }

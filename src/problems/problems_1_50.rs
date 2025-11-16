@@ -1,5 +1,7 @@
+use std::{cmp::max, collections::HashMap};
+
 use itertools::Itertools;
-use project_euler::{is_palindrome, is_prime};
+use project_euler::{is_palindrome, is_prime, prime_factorise};
 
 use super::Problem;
 
@@ -7,7 +9,20 @@ pub struct Problem5;
 
 impl Problem for Problem5 {
     fn solve(&self) -> String {
-        todo!()
+        let map = (1..=20)
+            .flat_map(prime_factorise)
+            .fold(HashMap::new(), |mut map, factors| {
+                map.entry(factors.0)
+                    .and_modify(|entry| *entry = max(*entry, factors.1))
+                    .or_insert(factors.1);
+
+                map
+            });
+
+        map.iter()
+            .map(|(a, b)| a.pow(*b))
+            .product::<i64>()
+            .to_string()
     }
 }
 

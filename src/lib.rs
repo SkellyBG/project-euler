@@ -7,7 +7,7 @@ pub fn is_palindrome(input: &str) -> bool {
 }
 
 // return type: (factor, number of time)
-pub fn prime_factorise(mut num: i64) -> Vec<(i64, i64)> {
+pub fn prime_factorise(mut num: i64) -> Vec<(i64, u32)> {
     let mut vec = Vec::new();
 
     let ceil = num;
