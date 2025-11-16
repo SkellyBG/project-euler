@@ -1,0 +1,16 @@
+pub mod problems_1_50;
+
+pub trait Problem {
+    fn solve(&self) -> String;
+}
+
+pub fn get_problem(id: u32) -> Option<Box<dyn Problem>> {
+    match id {
+        1 => Some(Box::new(problems_1_50::Problem1)),
+        2 => Some(Box::new(problems_1_50::Problem2)),
+        3 => Some(Box::new(problems_1_50::Problem3)),
+        4 => Some(Box::new(problems_1_50::Problem4)),
+
+        _ => None,
+    }
+}
