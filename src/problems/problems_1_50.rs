@@ -5,6 +5,19 @@ use project_euler::{is_palindrome, is_prime, prime_factorise};
 
 use super::Problem;
 
+pub struct Problem7;
+
+impl Problem for Problem7 {
+    fn solve(&self) -> String {
+        // silly bruteforce for 10001st prime
+        (1..=u32::MAX)
+            .filter(|num| is_prime((*num).into()))
+            .nth(10000)
+            .unwrap()
+            .to_string()
+    }
+}
+
 pub struct Problem6;
 
 impl Problem for Problem6 {

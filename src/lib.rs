@@ -1,5 +1,5 @@
 pub fn is_prime(num: i64) -> bool {
-    !(2..num.isqrt()).any(|factor| num % factor == 0)
+    num > 1 && !(2..=num.isqrt()).any(|factor| num % factor == 0)
 }
 
 pub fn is_palindrome(input: &str) -> bool {
@@ -30,12 +30,17 @@ pub fn prime_factorise(mut num: i64) -> Vec<(i64, u32)> {
 
 #[cfg(test)]
 mod test {
-    use crate::prime_factorise;
+    use crate::{is_prime, prime_factorise};
 
     #[test]
     fn test_prime_factorise() {
         assert_eq!(prime_factorise(2), vec![(2, 1)]);
         assert_eq!(prime_factorise(8), vec![(2, 3)]);
         assert_eq!(prime_factorise(20), vec![(2, 2), (5, 1)]);
+    }
+
+    #[test]
+    fn test_is_prime() {
+        assert!(!is_prime(1));
     }
 }
