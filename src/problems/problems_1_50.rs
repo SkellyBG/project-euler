@@ -5,6 +5,17 @@ use project_euler::{is_palindrome, is_prime, prime_factorise};
 
 use super::Problem;
 
+pub struct Problem6;
+
+impl Problem for Problem6 {
+    fn solve(&self) -> String {
+        let result = (1..=100).sum::<i64>() * (1..=100).sum::<i64>()
+            - (1..=100).map(|num| num * num).sum::<i64>();
+
+        result.to_string()
+    }
+}
+
 pub struct Problem5;
 
 impl Problem for Problem5 {
