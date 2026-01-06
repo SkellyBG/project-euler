@@ -5,6 +5,31 @@ use project_euler::{is_palindrome, is_prime, prime_factorise};
 
 use super::Problem;
 
+pub struct Problem9;
+
+impl Problem for Problem9 {
+    fn solve(&self) -> String {
+        // a^2 + b^2 = c^2, and a + b + c = 1000
+        for a in 1..1000_u32 {
+            for b in 1..1000_u32 {
+                let c = ((a.pow(2) + b.pow(2)) as f64).sqrt();
+                if c.round() != c {
+                    continue;
+                }
+
+                let c = c as u32;
+
+                if a + b + c == 1000 {
+                    dbg!(a, b, c);
+                    return (a * b * c).to_string();
+                }
+            }
+        }
+
+        unreachable!()
+    }
+}
+
 pub struct Problem8;
 
 impl Problem for Problem8 {
